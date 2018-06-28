@@ -39,7 +39,7 @@ pipeline {
            echo "Merging Development into Master"
            sh 'git merge development'
            echo "Git push to origin"
-           sh 'git push origin master'
+           sh "git push origin master"
          }
 
        }
