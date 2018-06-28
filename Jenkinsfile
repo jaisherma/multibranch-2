@@ -33,7 +33,7 @@ pipeline {
            sh "git stash"
            echo "Checking out Development"
            sh 'git checkout development'
-           sh 'git pull origin'
+           sh 'git pull origin development'
            echo 'Checking Out Master'
            sh 'git checkout master'
            echo "Merging Development into Master"
