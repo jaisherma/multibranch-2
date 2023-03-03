@@ -37,8 +37,8 @@ pipeline {
            bat 'git pull origin'
            echo 'Checking Out Master'
            bat 'git checkout master'
-           echo "Merging Development into Master"
-           bat 'git merged development'
+           echo "aborting Development into Master"
+           bat 'git merge --abort'
            echo "Git push to origin"
            bat 'git push origin master'
          }
