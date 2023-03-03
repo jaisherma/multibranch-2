@@ -5,9 +5,9 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'javac -d . src/*.java'
-        sh 'echo Main-Class: Rectangulator > MANIFEST.MF'
-        sh 'jar -cvmf MANIFEST.MF rectangle.jar *.class'
+        bat 'javac -d . src/*.java'
+        bat 'echo Main-Class: Rectangulator > MANIFEST.MF'
+        bat 'jar -cvmf MANIFEST.MF rectangle.jar *.class'
       }
        post {
           success {
@@ -17,7 +17,7 @@ pipeline {
     }
     stage('run') {
       steps {
-        sh 'java -jar rectangle.jar 7 9'
+        bat 'java -jar rectangle.jar 7 9'
       }
     }
     stage('Promote Development to Master'){
@@ -30,16 +30,16 @@ pipeline {
 
         steps {
            echo "Stashing Local Changes"
-           sh "git stash"
+           bat "git stash"
            echo "Checking out Development"
-           sh 'git checkout development'
-           sh 'git pull origin development'
+           bat 'git checkout development'
+           bat 'git pull origin development'
            echo 'Checking Out Master'
-           sh 'git checkout master'
+           bat 'git checkout master'
            echo "Merging Development into Master"
-           sh 'git merge development'
+           bat 'git merge development'
            echo "Git push to origin"
-           sh "git push origin master"
+           bat "git push origin master"
          }
 
        }
