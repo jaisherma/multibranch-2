@@ -38,7 +38,7 @@ pipeline {
            echo 'Checking Out Master'
            bat 'git checkout master'
            echo "aborting Development into Master"
-           bat 'git merge --abort'
+           bat 'git merge development'
            echo "Git push to origin"
            bat 'git push origin master'
          }
